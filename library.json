@@ -1,0 +1,51 @@
+{
+	"name": "actor-DFPeriodicPeristalticPump",
+	"version": "0.5.0",
+	"description": "DF Robot peristaltic pump for precise dosing triggered at regular intervals",
+	"keywords": "Fabrica-IO, actor, pump, automatic",
+	"repository":
+	{
+	  "type": "git",
+	  "url": "https://github.com/FabricaIO/actor-DFPeriodicPeristalticPump.git"
+	},
+	"authors":
+	[
+	  {
+		"name": "Sam Groveman",
+		"email": "SamGroveman@outlook.com",
+		"url": "https://github.com/FabricaIO"
+	  }
+	],
+	"dependencies": {
+		"DFPeristalticPump": "https://github.com/FabricaIO/actor-DFPeristalticPump"
+	  },
+	"license": "GPLv3",
+	"homepage": "https://github.com/FabricaIO",
+	"frameworks": "arduino",
+	"platforms": "*",
+	"fabrica-io" : {
+		"name": "PeriodicPump",
+		"type": 1,
+		"category": "Pump",
+		"libname": "DFPeriodicPeristalticPump",
+		"includes": ["DFPeriodicPeristalticPump"],
+		"description": "A peristaltic pump that doses at regular intervals",
+		"constructor":
+		[
+			[
+				{
+					"name": "Pin",
+					"type": "int",
+					"description": "The pin to use",
+					"default": ""
+				},
+				{
+					"name": "Configfile",
+					"type": "String",
+					"description": "The file name to store settings in",
+					"default": "DFPeriodicPump.json"
+				}
+			]
+		]
+	}
+  }
