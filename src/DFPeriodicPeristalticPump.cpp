@@ -15,7 +15,6 @@ bool DFPeriodicPeristalticPump::begin() {
 	if (DFPeristalticPump::begin()) {
 		// Set description
 		Description.type = "pump";
-		Description.name = "Periodic Peristaltic Pump";
 		if (!configExists) {
 			// Set defaults
 			task_config.taskName = "Period Pump";
