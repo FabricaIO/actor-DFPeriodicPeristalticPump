@@ -17,7 +17,7 @@ bool DFPeriodicPeristalticPump::begin() {
 		Description.type = "pump";
 		if (!configExists) {
 			// Set defaults
-			task_config.taskName = "Period Pump";
+			task_config.set_taskName(Description.name.c_str());
 			task_config.taskPeriod = 1000;
 			result = setConfig(getConfig(), true);
 		} else {
@@ -65,7 +65,7 @@ bool DFPeriodicPeristalticPump::setConfig(String config, bool save) {
 		}
 		// Assign loaded values
 		add_config.enabled = doc["Enabled"].as<bool>();
-		task_config.taskName = doc["taskName"].as<std::string>();
+		task_config.set_taskName(Description.name.c_str());
 		task_config.taskPeriod = doc["taskPeriod"].as<ulong>() * 60000; // Convert to milliseconds
 		if (save) {
 			if (!saveConfig(config_path, config)) {
@@ -91,7 +91,6 @@ JsonDocument DFPeriodicPeristalticPump::addAdditionalConfig() {
 		return doc;
 	}
 	doc["Enabled"] = add_config.enabled;
-	doc["taskName"] = task_config.taskName;
 	doc["taskPeriod"] = task_config.taskPeriod / 60000; // Convert to minutes
 	return doc;
 }
